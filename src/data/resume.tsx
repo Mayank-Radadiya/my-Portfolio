@@ -105,16 +105,14 @@ export const DATA = {
       dates: "",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "A simple and secure chat app focused on real-time messaging with an intuitive user interface. Perfect for personal and professional one-on-one conversations. Designed to keep communication fast and efficient.",
       technologies: [
         "Next.js",
         "Typescript",
-        "PostgreSQL",
-        "Prisma",
+        "Upstash Redis",
         "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+        "React-hook-form",
+        "Google Authentication",
       ],
       links: [
         {
@@ -137,17 +135,9 @@ export const DATA = {
       href: "https://zoom-clone-web-app.vercel.app/",
       active: true,
       description:
-        "Designed, developed and sold animated UI components for developers.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
+        "A powerful Zoom app designed to enhance virtual meetings with advanced productivity tools and analytics. Seamlessly integrates with Zoom to offer real-time insights and a user-friendly interface. Perfect for professionals and teams seeking efficient collaboration.",
+
+      technologies: ["Next.js", "Typescript", "Clerk", "Stream", "TailwindCSS"],
       links: [
         {
           type: "Website",
@@ -169,17 +159,14 @@ export const DATA = {
       dates: "",
       active: true,
       description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+        "A Threads app designed for quick, real-time and social interaction. Features a sleek feed and post sharing. Ideal for staying updated with trends and engaging with a community.",
       technologies: [
         "Next.js",
         "Typescript",
-        "PostgreSQL",
-        "Prisma",
+        "Mongodb",
+        "Clerk",
         "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
+        "mongoose",
       ],
       links: [
         {
@@ -202,7 +189,7 @@ export const DATA = {
       dates: "",
       active: true,
       description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+        "A powerful Learning Management System (LMS) built with Next.js and TypeScript, designed for seamless course management and student engagement where teacher can sell their course. Student can buy that course and improve their skills 📚🚀.",
       technologies: [
         "Next.js",
         "Typescript",
@@ -212,7 +199,8 @@ export const DATA = {
         "Shadcn UI",
         "Magic UI",
         "Stripe",
-        "Cloudflare Workers",
+        "Mux",
+        "Uploadthing",
       ],
       links: [
         {
