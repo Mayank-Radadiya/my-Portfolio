@@ -30,8 +30,8 @@ export const DATA = {
     { href: "/contact", icon: NotebookIcon, label: "Contact" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "mayankradadiya2@gmail.com",
+    tel: "xxx",
     social: {
       GitHub: {
         name: "GitHub",
@@ -71,6 +71,7 @@ export const DATA = {
         "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
     },
   ],
+
   education: [
     {
       school: "Jain University",
@@ -100,34 +101,36 @@ export const DATA = {
 
   projects: [
     {
-      title: "Chat App",
-      href: "https://my-chat-webapp.vercel.app",
+      title: "CodeHub",
+      href: "https://codehub-x.vercel.app/",
       dates: "",
       active: true,
       description:
-        "A simple and secure chat app focused on real-time messaging with an intuitive user interface. Perfect for personal and professional one-on-one conversations. Designed to keep communication fast and efficient.",
+        "CodeHub is an online code editor resembling Visual Studio Code, enabling users to run code without setting up individual environments. It integrates AI features that suggest best coding practices and improvements. Additionally, a Snippet page allows users to share and read code snippets, fostering community collaboration.",
       technologies: [
         "Next.js",
         "Typescript",
-        "Upstash Redis",
+        "Convex",
         "TailwindCSS",
-        "React-hook-form",
-        "Google Authentication",
+        "Clerk",
+        "Gemini Ai",
+        "Framer-motion",
+        "Monaco-editor",
       ],
       links: [
         {
           type: "Website",
-          href: "https://chatcollect.com",
+          href: "https://codehub-x.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "Source",
-          href: "https://github.com/Mayank-Radadiya/RealTime_ChatApp",
+          href: "https://github.com/Mayank-Radadiya/CodeHub.git",
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/chatapp.png",
-      video: "",
+      image: "",
+      video: "/Codehub.mov",
     },
 
     {
