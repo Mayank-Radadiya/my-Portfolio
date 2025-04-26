@@ -39,11 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: `${DATA.name}`,
-    card: "summary_large_image",
-  },
-  verification: {
-    google: "",
-    yandex: "",
+    creator: "@_Mayank_005",
   },
 };
 
