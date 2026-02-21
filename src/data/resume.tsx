@@ -3,27 +3,43 @@ import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Mayank R.",
-  initials: "DV",
+  initials: "MR",
   location: "Bengaluru, India",
-  locationLink:
-    "https://www.google.com/maps/place/Somanahalli,+Karnataka+560082/@12.7624112,77.4855874,13.6z/data=!4m6!3m5!1s0x3bae43daa1262291:0x2e0affc1a1d48c76!8m2!3d12.7716832!4d77.5053269!16s%2Fg%2F1tdqy4_l?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D",
-  description: "I love building things.",
+  locationLink: "https://www.google.com/maps/place/Bengaluru",
+  description: "Full-Stack Developer crafting performant web experiences.",
+  roles: [
+    "Full-Stack Developer",
+    "Next.js Engineer",
+    "Open Source Enthusiast",
+    "UI/UX Thinker",
+  ],
   summary:
-    "Hi! I’m a web developer who loves building websites and apps that are easy to use and solve real problems. I work with tools like JavaScript, TypeScript, and frameworks like Next.js and Node.js to create fast and reliable solutions. I learn quickly and enjoy teaming up with people to turn their ideas into reality. Let’s build something awesome together!",
+    "I build fast, reliable web applications with TypeScript, Next.js, and Node.js. From automated workflows to real-time collaboration tools — I turn complex ideas into clean, scalable products. Currently pursuing Computer Science at Jain University, Bengaluru.",
   avatarUrl: "/avatar.jpeg",
-  skills: [
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
-    "Java",
-    "Postgres",
-    "Docker",
-    "Github",
-    "TailwindCSS",
+  resumeUrl: "#",
+  skillCategories: [
+    {
+      name: "Frontend",
+      skills: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion",
+      ],
+    },
+    {
+      name: "Backend",
+      skills: ["Node.js", "PostgreSQL", "Prisma", "tRPC", "REST APIs"],
+    },
+    {
+      name: "Tools & Infra",
+      skills: ["Docker", "Git & GitHub", "Vercel", "Clerk", "Stripe"],
+    },
+    {
+      name: "Languages",
+      skills: ["JavaScript", "TypeScript", "Java", "HTML", "CSS", "Solidity"],
+    },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -37,54 +53,36 @@ export const DATA = {
         name: "GitHub",
         url: "https://github.com/Mayank-Radadiya",
         icon: Icons.github,
-
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/mayank-radadiya-693583241/",
         icon: Icons.linkedin,
-
         navbar: true,
       },
       X: {
         name: "X",
         url: "https://x.com/_Mayank_005",
         icon: Icons.x,
-
         navbar: true,
       },
     },
   },
 
-  work: [
-    {
-      company: "Atomic Finance",
-      href: "https://atomic.finance",
-      badges: [],
-      location: "Remote",
-      title: "Bitcoin Protocol Engineer",
-      logoUrl: "/atomic.png",
-      start: "May 2021",
-      end: "Oct 2022",
-      description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
-    },
-  ],
-
   education: [
     {
       school: "Jain University",
       href: "https://www.jainuniversity.ac.in/",
-      degree: "Bachelor's Degree in Computer Science and Engineering  (CSE)",
+      degree: "Bachelor's Degree in Computer Science & Engineering (CSE)",
       logoUrl: "/jain.png",
       start: "2022",
-      end: "will end in 2026",
+      end: "2026",
     },
     {
       school: "Kaushal Vidyabhavan",
       href: "https://kaushalvidyabhavan.com/",
-      degree: "Higher secondary education",
+      degree: "Higher Secondary Education",
       logoUrl: "/Kaushal.png",
       start: "2020",
       end: "2022",
@@ -92,7 +90,7 @@ export const DATA = {
     {
       school: "Gurukul Surat",
       href: "https://surat.rajkotgurukul.org/",
-      degree: "Std from 3 to 10",
+      degree: "Secondary Education (Std 3–10)",
       logoUrl: "/gurukul.png",
       start: "2013",
       end: "2020",
@@ -101,21 +99,55 @@ export const DATA = {
 
   projects: [
     {
+      title: "FlowX",
+      href: "https://x-flow.vercel.app/",
+      dates: "",
+      active: true,
+      featured: true,
+      description:
+        "A low-code automation platform similar to n8n and Zapier. Build automated workflows by connecting services visually with a drag-and-drop editor, AI-powered nodes, and real-time execution monitoring.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "tRPC",
+        "PostgreSQL",
+        "Prisma",
+        "Tailwind",
+        "Better Auth",
+        "Vercel AI SDK",
+        "Inngest",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://x-flow.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/Mayank-Radadiya/FlowX",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "/flowX.mp4",
+    },
+    {
       title: "CodeHub",
       href: "https://codehub-x.vercel.app/",
       dates: "",
       active: true,
+      featured: false,
       description:
-        "CodeHub is an online code editor resembling Visual Studio Code, enabling users to run code without setting up individual environments. It integrates AI features that suggest best coding practices and improvements. Additionally, a Snippet page allows users to share and read code snippets, fostering community collaboration.",
+        "An online code editor with VS Code-like experience. Run code without local setup, get AI-powered coding suggestions, and share snippets with the community.",
       technologies: [
         "Next.js",
-        "Typescript",
+        "TypeScript",
         "Convex",
         "TailwindCSS",
         "Clerk",
-        "Gemini Ai",
-        "Framer-motion",
-        "Monaco-editor",
+        "Gemini AI",
+        "Monaco Editor",
       ],
       links: [
         {
@@ -132,15 +164,14 @@ export const DATA = {
       image: "",
       video: "/Codehub.mov",
     },
-
     {
-      title: "Zoom",
+      title: "Zoom Clone",
       href: "https://zoom-clone-web-app.vercel.app/",
       active: true,
+      featured: false,
       description:
-        "A powerful Zoom app designed to enhance virtual meetings with advanced productivity tools and analytics. Seamlessly integrates with Zoom to offer real-time insights and a user-friendly interface. Perfect for professionals and teams seeking efficient collaboration.",
-
-      technologies: ["Next.js", "Typescript", "Clerk", "Stream", "TailwindCSS"],
+        "A real-time video conferencing app with meeting scheduling, screen sharing, and participant management. Built with Stream for WebRTC.",
+      technologies: ["Next.js", "TypeScript", "Clerk", "Stream", "TailwindCSS"],
       links: [
         {
           type: "Website",
@@ -157,50 +188,18 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Threads",
-      href: "https://threads-next-webapp.vercel.app/sign-in",
-      dates: "",
-      active: true,
-      description:
-        "A Threads app designed for quick, real-time and social interaction. Features a sleek feed and post sharing. Ideal for staying updated with trends and engaging with a community.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "Mongodb",
-        "Clerk",
-        "TailwindCSS",
-        "mongoose",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://threads-next-webapp.vercel.app/sign-in",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/Mayank-Radadiya/Threads-",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/threads.png",
-      video: "",
-    },
-    {
-      title: "LMS - Learnify",
+      title: "Learnify LMS",
       href: "https://learnify-blue.vercel.app/",
       dates: "",
       active: true,
+      featured: false,
       description:
-        "A powerful Learning Management System (LMS) built with Next.js and TypeScript, designed for seamless course management and student engagement where teacher can sell their course. Student can buy that course and improve their skills 📚🚀.",
+        "A full-featured Learning Management System where teachers create and sell courses with video hosting, and students purchase and track progress.",
       technologies: [
         "Next.js",
-        "Typescript",
+        "TypeScript",
         "PostgreSQL",
         "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
         "Stripe",
         "Mux",
         "Uploadthing",
