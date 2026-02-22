@@ -1,7 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
+import { EducationCard } from "@/components/education-card";
 import { AnimatedRole } from "@/components/animated-role";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -164,29 +164,39 @@ export default function Page() {
 
       {/* ═══════════════════ EDUCATION ═══════════════════ */}
       <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="space-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 3} inView>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-              Education
-            </h2>
+            <div className="space-y-2">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
+                Education
+              </h2>
+              <p className="text-muted-foreground text-sm max-w-lg">
+                My academic journey — from school to university.
+              </p>
+            </div>
           </BlurFade>
-          {DATA.education.map((education, id) => (
-            <BlurFade
-              key={education.school}
-              delay={BLUR_FADE_DELAY * 4 + id * 0.08}
-              inView
-            >
-              <ResumeCard
+
+          {/* Timeline */}
+          <div className="relative">
+            {DATA.education.map((education, id) => (
+              <BlurFade
                 key={education.school}
-                href={education.href}
-                logoUrl={education.logoUrl}
-                altText={education.school}
-                title={education.school}
-                subtitle={education.degree}
-                period={`${education.start} – ${education.end}`}
-              />
-            </BlurFade>
-          ))}
+                delay={BLUR_FADE_DELAY * 4 + id * 0.1}
+                inView
+              >
+                <EducationCard
+                  logoUrl={education.logoUrl}
+                  altText={education.school}
+                  school={education.school}
+                  degree={education.degree}
+                  href={education.href}
+                  start={education.start}
+                  end={education.end}
+                  isLast={id === DATA.education.length - 1}
+                />
+              </BlurFade>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -224,7 +234,7 @@ export default function Page() {
             ))}
 
           {/* Other projects grid */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {DATA.projects
               .filter((p) => !p.featured)
               .map((project, id) => (

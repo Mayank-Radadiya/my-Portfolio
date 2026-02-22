@@ -44,12 +44,19 @@ export function ProjectCard({
   return (
     <Card
       className={cn(
-        "group flex flex-col overflow-hidden border hover:shadow-xl transition-all duration-300 ease-out h-full",
-        "hover:border-primary/20 cursor-pointer",
+        "group relative flex flex-col overflow-hidden border h-full",
+        "transition-all duration-300 ease-out",
+        "hover:shadow-xl hover:shadow-primary/5 hover:border-primary/25",
+        "hover:-translate-y-0.5 cursor-pointer",
         featured && hasMedia && "sm:flex-row sm:min-h-[280px]",
         className,
       )}
     >
+      {/* Gradient accent bar (non-featured only) */}
+      {!featured && (
+        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-primary/60 via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      )}
+
       {/* Media Section */}
       {hasMedia && (
         <Link
@@ -69,7 +76,7 @@ export function ProjectCard({
               playsInline
               className={cn(
                 "pointer-events-none w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]",
-                featured ? "h-full min-h-[220px]" : "h-48",
+                featured ? "h-full min-h-[220px]" : "h-52",
               )}
             />
           )}
@@ -81,12 +88,12 @@ export function ProjectCard({
               height={450}
               className={cn(
                 "w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]",
-                featured ? "h-full min-h-[220px]" : "h-48",
+                featured ? "h-full min-h-[220px]" : "h-52",
               )}
             />
           )}
           {/* Gradient overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </Link>
       )}
 
@@ -100,7 +107,7 @@ export function ProjectCard({
         <CardHeader className="px-5 pt-5 pb-2">
           <div className="space-y-2.5">
             {featured && (
-              <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+              <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-primary bg-primary/10 px-2.5 py-1 rounded-full">
                 Featured Project
               </span>
             )}
@@ -121,10 +128,10 @@ export function ProjectCard({
         <div className="mt-auto">
           <CardContent className="flex flex-col px-5 pb-2">
             {tags && tags.length > 0 && (
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1.5">
                 {tags.map((tag) => (
                   <Badge
-                    className="px-1.5 py-0.5 text-[10px] font-medium"
+                    className="px-2 py-0.5 text-[10px] font-medium hover:bg-primary/10 hover:text-primary transition-colors"
                     variant="secondary"
                     key={tag}
                   >
@@ -135,14 +142,14 @@ export function ProjectCard({
             )}
           </CardContent>
 
-          <CardFooter className="px-5 pb-4 pt-2">
+          <CardFooter className="px-5 pb-5 pt-2">
             {links && links.length > 0 && (
-              <div className="flex flex-row flex-wrap items-start gap-1.5">
+              <div className="flex flex-row flex-wrap items-start gap-2">
                 {links.map((link, idx) => (
                   <Link href={link?.href} key={idx} target="_blank">
                     <Badge
                       key={idx}
-                      className="flex gap-1.5 px-2.5 py-1 text-[10px] font-medium hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+                      className="flex gap-1.5 px-3 py-1.5 text-[11px] font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                     >
                       {link.icon}
                       {link.type}
