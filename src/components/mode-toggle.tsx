@@ -10,7 +10,7 @@ interface ModeToggleProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const ModeToggle = forwardRef<HTMLButtonElement, ModeToggleProps>(
-  function ModeToggle({ className, onClick, ...props }, ref) {
+  function ModeToggle() {
     const { theme, setTheme } = useTheme();
 
     return (
@@ -25,7 +25,7 @@ export const ModeToggle = forwardRef<HTMLButtonElement, ModeToggleProps>(
         <MoonIcon className="hidden h-[1.2rem] w-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
       </Button>
     );
-  }
+  },
 );
 
 ModeToggle.displayName = "ModeToggle";

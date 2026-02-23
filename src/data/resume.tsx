@@ -1,22 +1,18 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 
 export const DATA = {
-  name: "Mayank R.",
+  name: "I'm Mayank R.",
   initials: "MR",
   location: "Bengaluru, India",
   locationLink: "https://www.google.com/maps/place/Bengaluru",
   description: "Full-Stack Developer crafting performant web experiences.",
-  roles: [
-    "Full-Stack Developer",
-    "Next.js Engineer",
-    "Open Source Enthusiast",
-    "UI/UX Thinker",
-  ],
+  roles: ["Full-Stack Developer", "Open Source Enthusiast", "UI/UX Thinker"],
   summary:
     "I build fast, reliable web applications with TypeScript, Next.js, and Node.js. From automated workflows to real-time collaboration tools — I turn complex ideas into clean, scalable products. Currently pursuing Computer Science at Jain University, Bengaluru.",
   avatarUrl: "/avatar.jpeg",
   resumeUrl: "#",
+  githubUsername: "Mayank-Radadiya",
   skillCategories: [
     {
       name: "Frontend",
@@ -34,17 +30,14 @@ export const DATA = {
     },
     {
       name: "Tools & Infra",
-      skills: ["Docker", "Git & GitHub", "Vercel", "Clerk", "Stripe"],
+      skills: ["Docker", "Git & GitHub", "Postman"],
     },
     {
       name: "Languages",
       skills: ["JavaScript", "TypeScript", "Java", "HTML", "CSS", "Solidity"],
     },
   ],
-  navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/contact", icon: NotebookIcon, label: "Contact" },
-  ],
+  navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
     email: "mayankradadiya2@gmail.com",
     tel: "xxx",
@@ -74,7 +67,7 @@ export const DATA = {
     {
       school: "Jain University",
       href: "https://www.jainuniversity.ac.in/",
-      degree: "Bachelor's Degree in Computer Science & Engineering (CSE)",
+      degree: "B.Tech in Computer Science & Engineering",
       logoUrl: "/jain.png",
       start: "2022",
       end: "2026",

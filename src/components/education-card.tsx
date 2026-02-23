@@ -26,62 +26,51 @@ export function EducationCard({
   isLast = false,
 }: EducationCardProps) {
   return (
-    <div className="relative flex gap-6 pb-8 last:pb-0">
+    <div className="relative flex gap-4 pb-6 last:pb-0">
       {/* Timeline connector */}
       {!isLast && (
-        <div className="absolute left-[23px] top-14 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+        <div className="absolute left-[19px] top-12 bottom-0 w-px bg-border" />
       )}
 
       {/* Timeline node */}
       <div className="relative z-10 flex-none">
-        <div className="relative">
-          <div className="absolute -inset-1.5 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <Avatar className="size-12 border-2 border-primary/20 bg-card shadow-sm ring-4 ring-background">
-            <AvatarImage
-              src={logoUrl}
-              alt={altText}
-              className="object-contain p-1"
-            />
-            <AvatarFallback className="text-xs font-heading font-semibold bg-primary/5 text-primary">
-              {altText[0]}
-            </AvatarFallback>
-          </Avatar>
-        </div>
+        <Avatar className="size-10 border bg-card shadow-sm ring-2 ring-background">
+          <AvatarImage
+            src={logoUrl}
+            alt={altText}
+            className="object-contain p-1"
+          />
+          <AvatarFallback className="text-[10px] font-heading font-semibold">
+            {altText[0]}
+          </AvatarFallback>
+        </Avatar>
       </div>
 
-      {/* Content card */}
+      {/* Content — compact */}
       <Link
         href={href || "#"}
         target="_blank"
-        className="group flex-1 cursor-pointer"
+        className="group flex-1 cursor-pointer min-w-0 pt-1"
       >
         <div
           className={cn(
-            "rounded-xl border bg-card p-4 sm:p-5",
-            "transition-all duration-300 ease-out",
-            "hover:border-primary/25 hover:shadow-lg hover:shadow-primary/5",
-            "hover:-translate-y-0.5",
+            "rounded-lg border bg-card px-4 py-3",
+            "transition-all duration-200",
+            "hover:border-accent/20 hover:shadow-sm",
           )}
         >
-          {/* Top row: school name + date pill */}
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="font-heading font-semibold text-sm sm:text-base leading-tight text-foreground">
-              {school}
-            </h3>
-            <span className="flex-none inline-flex items-center rounded-full bg-primary/8 border border-primary/15 px-2.5 py-0.5 text-[11px] font-medium tabular-nums text-primary whitespace-nowrap">
-              {start} – {end}
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="font-heading font-semibold text-sm leading-tight truncate">
+                {school}
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                {degree}
+              </p>
+            </div>
+            <span className="flex-none text-[11px] font-medium tabular-nums text-muted-foreground">
+              {start}–{end}
             </span>
-          </div>
-
-          {/* Degree */}
-          <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
-            {degree}
-          </p>
-
-          {/* Subtle arrow indicator */}
-          <div className="mt-3 flex items-center gap-1.5 text-xs text-muted-foreground/60 group-hover:text-primary/70 transition-colors duration-300">
-            <span className="inline-block w-4 h-px bg-current transition-all duration-300 group-hover:w-6" />
-            <span className="text-[11px]">Visit</span>
           </div>
         </div>
       </Link>
