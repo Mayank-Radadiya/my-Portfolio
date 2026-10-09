@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { HomeIcon } from "lucide-react";
 
 export const DATA = {
-  name: "I'm Mayank R.",
+  name: "Mayank R.",
   initials: "MR",
   location: "Bengaluru, India",
   locationLink: "https://www.google.com/maps/place/Bengaluru",
@@ -10,33 +10,80 @@ export const DATA = {
   roles: ["Full-Stack Developer", "Open Source Enthusiast", "UI/UX Thinker"],
   summary:
     "I build fast, reliable web applications with TypeScript, Next.js, and Node.js. From automated workflows to real-time collaboration tools — I turn complex ideas into clean, scalable products. Currently pursuing Computer Science at Jain University, Bengaluru.",
+  about: {
+    identity: {
+      role: "Full-Stack Developer",
+      org: "Jain University",
+      program: "B.Tech, Computer Science & Engineering",
+      period: "2022 — 2026",
+    },
+    lookingFor: "Full-stack and product engineering roles",
+    headline:
+      "I build full-stack products where AI is part of the architecture, not a prompt stuck on the side. Most of my work starts as a weekend idea and ends as something real people use — FlowX, a low-code automation platform with AI workflow nodes, is the clearest example. I care about the parts most demos skip: the schema, the loading states, the deploy pipeline.",
+    capabilities: [
+      { label: "AI product engineering", detail: "Vercel AI SDK · Gemini" },
+      {
+        label: "Full-stack systems",
+        detail: "Next.js · tRPC · Prisma · PostgreSQL",
+      },
+      { label: "Realtime collaboration", detail: "WebRTC · Convex · Inngest" },
+      { label: "Interface engineering", detail: "React · Tailwind · Framer Motion" },
+    ],
+    principles: [
+      {
+        label: "Own the whole path.",
+        detail: "Database through UI, no handoff in the middle.",
+      },
+      { label: "Ship every week.", detail: "Small, working, in production." },
+      {
+        label: "Automate the boring 80%.",
+        detail: "If I do it twice, it becomes a script.",
+      },
+    ],
+  },
   avatarUrl: "/avatar.jpeg",
   resumeUrl: "#",
   githubUsername: "Mayank-Radadiya",
-  skillCategories: [
-    {
-      name: "Frontend",
-      skills: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "TailwindCSS",
-        "Framer Motion",
-      ],
+  stack: {
+    meta: "Interface to deployment",
+    intro:
+      "Top of the stack to the bottom — the tools these projects are built on.",
+    layers: [
+      {
+        name: "Interface",
+        tools: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      },
+      {
+        name: "Service",
+        tools: ["Node.js", "tRPC", "REST APIs", "Inngest", "WebRTC"],
+      },
+      {
+        name: "Data",
+        tools: ["PostgreSQL", "Prisma", "Convex"],
+      },
+      {
+        name: "Platform",
+        tools: ["Vercel", "Docker", "Git & GitHub", "Better Auth", "Clerk"],
+      },
+    ],
+    ai: {
+      name: "AI",
+      tools: ["Vercel AI SDK", "Gemini"],
+      detail: "Workflow nodes in FlowX, inline suggestions in CodeHub.",
     },
-    {
-      name: "Backend",
-      skills: ["Node.js", "PostgreSQL", "Prisma", "tRPC", "REST APIs"],
-    },
-    {
-      name: "Tools & Infra",
-      skills: ["Docker", "Git & GitHub", "Postman"],
-    },
-    {
-      name: "Languages",
-      skills: ["JavaScript", "TypeScript", "Java", "HTML", "CSS", "Solidity"],
-    },
-  ],
+    also: [
+      "JavaScript",
+      "Java",
+      "Solidity",
+      "HTML",
+      "CSS",
+      "Postman",
+      "Monaco Editor",
+      "Stripe",
+      "Mux",
+      "Uploadthing",
+    ],
+  },
   navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
     email: "mayankradadiya2@gmail.com",

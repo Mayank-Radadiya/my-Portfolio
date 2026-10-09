@@ -162,6 +162,227 @@ body {
   animation: count-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ─── Hero: drifting hairline grid ─── */
+@keyframes grid-drift {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      48px 48px,
+      48px 48px;
+  }
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, hsl(var(--foreground) / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.055) 1px, transparent 1px);
+  background-size:
+    48px 48px,
+    48px 48px;
+  animation: grid-drift 28s linear infinite;
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 35%,
+    #000 20%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 35%,
+    #000 20%,
+    transparent 78%
+  );
+}
+
+.dark .hero-grid {
+  background-image:
+    linear-gradient(to right, hsl(var(--foreground) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+}
+
+/* ─── Hero: accent underline that draws itself under the role rotator ─── */
+@keyframes underline-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.role-underline {
+  transform-origin: left;
+  animation: underline-draw 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+  scale: 0 1;
+}
+
+/* ─── Hero: primary CTA — sheen sweep on hover ─── */
+.cta-sheen {
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    hsl(var(--background) / 0.22) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  background-position: 150% 0;
+  transition:
+    background-position 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s ease;
+}
+
+.cta-sheen:hover {
+  background-position: -50% 0;
+}
+
+.cta-sheen:active {
+  transform: translateY(1px);
+}
+
+/* ─── Hero: quiet link — underline wipes in from the left ─── */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* ─── Hero: portrait strip ─── */
+.portrait-img {
+  filter: grayscale(1) contrast(1.05);
+  transition:
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait-strip:hover .portrait-img {
+  filter: grayscale(0) contrast(1);
+  transform: scale(1.03);
+}
+
+.portrait-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    hsl(var(--background) / 0.9) 0%,
+    transparent 45%
+  );
+  pointer-events: none;
+}
+
+/* ─── About: spec-sheet row ─── */
+.about-row {
+  @apply flex flex-wrap items-baseline gap-x-6 gap-y-1 border-t border-border py-3.5 last:border-b;
+}
+
+.about-row-label {
+  @apply font-heading text-sm font-medium tracking-tight text-foreground;
+}
+
+.about-row-meta {
+  @apply font-mono text-[11px] tracking-tight text-muted-foreground;
+}
+
+/* ─── Tech stack: capability path ─── */
+.stack-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  --stack-gap: 2rem;
+}
+
+.stack-lane {
+  position: relative;
+}
+
+.stack-dot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 7px;
+  width: 7px;
+  flex: none;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--foreground) / 0.35);
+  background: hsl(var(--background));
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.stack-lane:hover .stack-dot {
+  background: hsl(var(--foreground));
+  border-color: hsl(var(--foreground));
+}
+
+/* hovering a layer lifts its tool list with it */
+.stack-tools li {
+  transition: color 0.3s ease;
+}
+
+.stack-lane:hover .stack-tools li {
+  color: hsl(var(--foreground));
+}
+
+/* narrow screens: the path turns vertical, running dot to dot */
+@media (max-width: 1023px) {
+  .stack-lane:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3.5px;
+    height: calc(100% + var(--stack-gap));
+    width: 1px;
+    background: hsl(var(--border));
+  }
+}
+
+@media (min-width: 1024px) {
+  .stack-cols {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.5rem;
+    --stack-gap: 2.5rem;
+  }
+
+  /* the hairline runs from each dot to the head of the next layer.
+     the dot's own fill masks the first 7px, so the line emerges
+     from its edge rather than through it. */
+  .stack-lane:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 3.5px;
+    left: 0;
+    right: calc(-1 * var(--stack-gap));
+    height: 1px;
+    background: hsl(var(--border));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stack-cols[data-drawn="true"] .stack-lane::after {
+    transform: scaleX(1);
+  }
+
+  .stack-cols[data-drawn="true"] .stack-lane:nth-child(2)::after {
+    transition-delay: 0.07s;
+  }
+
+  .stack-cols[data-drawn="true"] .stack-lane:nth-child(3)::after {
+    transition-delay: 0.14s;
+  }
+}
+
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *,

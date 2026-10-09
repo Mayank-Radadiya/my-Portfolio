@@ -1,12 +1,13 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { AboutSection } from "@/components/about-section";
 import { ProjectCard } from "@/components/project-card";
 import { EducationCard } from "@/components/education-card";
 import { AnimatedRole } from "@/components/animated-role";
 import { GitHubStats } from "@/components/github-stats";
 import { ContactForm } from "@/components/contact-form";
+import { StackSection } from "@/components/stack-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import { MapPin, Mail, Sparkles, ArrowRight } from "lucide-react";
@@ -17,162 +18,137 @@ export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-24 sm:space-y-32 pb-32">
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section id="hero" className="pt-12 sm:pt-20">
-        <div className="space-y-8">
-          <div className="flex justify-between items-start gap-6">
-            <div className="flex-col flex flex-1 space-y-5">
-              {/* Status badge */}
-              <BlurFade delay={DELAY}>
-                <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground w-fit">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                  </span>
-                  Open to opportunities
-                </div>
-              </BlurFade>
+      <section id="hero" className="relative pt-12 sm:pt-16">
+        <div aria-hidden className="hero-grid pointer-events-none absolute inset-x-0 -top-8 -z-10 h-[420px]" />
 
-              {/* Name — large typographic hero */}
+        <div className="space-y-8">
+          {/* Metadata rule — status, location, socials */}
+          <BlurFade delay={DELAY}>
+            <div className="space-y-3">
+              <div className="h-px w-full bg-border" />
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-muted-foreground">
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-emerald-600 dark:text-emerald-400">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                  </span>
+                  Open to work
+                </span>
+
+                <div className="h-3 w-px bg-border" />
+
+                <Link
+                  href={DATA.locationLink}
+                  target="_blank"
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground cursor-pointer"
+                >
+                  <MapPin className="size-3" />
+                  {DATA.location}
+                </Link>
+
+                <div className="h-3 w-px bg-border" />
+
+                <div className="flex items-center gap-0.5">
+                  {Object.entries(DATA.contact.social).map(
+                    ([name, social]) => (
+                      <Link
+                        key={name}
+                        href={social.url}
+                        target="_blank"
+                        className="inline-flex items-center justify-center rounded-md size-6 text-muted-foreground transition-colors hover:text-foreground hover:bg-accent/10 cursor-pointer"
+                        aria-label={name}
+                      >
+                        <social.icon className="size-3.5" />
+                      </Link>
+                    ),
+                  )}
+                </div>
+              </div>
+            </div>
+          </BlurFade>
+
+          {/* Masthead + portrait strip */}
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-end lg:gap-16">
+            <div className="space-y-8">
               <BlurFadeText
                 delay={DELAY * 2}
-                className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight font-heading leading-[1.1]"
-                yOffset={8}
+                className="text-[clamp(2.75rem,10.5vw,8rem)] font-heading font-bold tracking-tighter leading-[0.92]"
+                yOffset={16}
                 text={`${DATA.name}`}
               />
 
-              {/* Animated role */}
+              {/* Animated role with drawn accent underline */}
               <BlurFade delay={DELAY * 3}>
-                <div className="text-lg sm:text-xl text-muted-foreground flex items-center gap-2">
-                  <Sparkles className="size-4 text-accent" />
-                  <AnimatedRole roles={DATA.roles} />
+                <div className="relative w-fit pb-2">
+                  <div className="flex items-center gap-2 text-lg text-muted-foreground sm:text-xl">
+                    <Sparkles className="size-4 shrink-0 text-accent" />
+                    <AnimatedRole roles={DATA.roles} />
+                  </div>
+                  <div className="role-underline absolute bottom-0 left-0 h-px w-full bg-accent/70" />
                 </div>
               </BlurFade>
 
-              {/* Description */}
+              {/* Standfirst + rule */}
               <BlurFade delay={DELAY * 4}>
-                <p className="max-w-lg text-muted-foreground leading-relaxed">
-                  {DATA.description}
-                </p>
+                <div className="space-y-8">
+                  <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
+                    {DATA.description}
+                  </p>
+                  <div className="h-px w-full bg-border" />
+                </div>
               </BlurFade>
 
-              {/* CTA Buttons */}
+              {/* CTAs — solid block + quiet link */}
               <BlurFade delay={DELAY * 5}>
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                   <Link
                     href="#projects"
-                    className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:bg-foreground/90 transition-colors cursor-pointer"
+                    className="cta-sheen group inline-flex items-center gap-3 rounded-lg bg-foreground px-7 py-3.5 text-sm font-medium text-background"
                   >
                     View Projects
-                    <ArrowRight className="size-3.5" />
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
+
                   <Link
                     href="#contact"
-                    className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-accent/10 hover:text-accent hover:border-accent/30 transition-colors cursor-pointer"
+                    className="link-underline group inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.15em] text-foreground"
                   >
-                    <Mail className="size-3.5" />
+                    <Mail className="size-3.5 text-accent" />
                     Get in Touch
                   </Link>
                 </div>
               </BlurFade>
-
-              {/* Location + Social links */}
-              <BlurFade delay={DELAY * 6}>
-                <div className="flex flex-wrap items-center gap-4 pt-1">
-                  <Link
-                    href={DATA.locationLink}
-                    target="_blank"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                  >
-                    <MapPin className="size-3" />
-                    {DATA.location}
-                  </Link>
-
-                  <div className="h-3 w-px bg-border" />
-
-                  <div className="flex items-center gap-1">
-                    {Object.entries(DATA.contact.social).map(
-                      ([name, social]) => (
-                        <Link
-                          key={name}
-                          href={social.url}
-                          target="_blank"
-                          className="inline-flex items-center justify-center rounded-md size-7 text-muted-foreground hover:text-foreground hover:bg-accent/10 transition-colors cursor-pointer"
-                          aria-label={name}
-                        >
-                          <social.icon className="size-3.5" />
-                        </Link>
-                      ),
-                    )}
-                  </div>
-                </div>
-              </BlurFade>
             </div>
 
-            {/* Avatar */}
-            <BlurFade delay={DELAY * 2}>
-              <Avatar className="size-28 sm:size-36 border-2 shadow-lg ring-4 ring-background">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback className="font-heading text-lg">
-                  {DATA.initials}
-                </AvatarFallback>
-              </Avatar>
+            {/* Right-edge portrait strip */}
+            <BlurFade delay={DELAY * 3} className="lg:justify-self-end">
+              <figure className="portrait-strip group relative w-40 overflow-hidden rounded-lg border border-border bg-muted sm:w-48 lg:w-full">
+                <div className="aspect-[3/4] w-full">
+                  <Avatar className="size-full rounded-none">
+                    <AvatarImage
+                      alt={DATA.name}
+                      src={DATA.avatarUrl}
+                      className="portrait-img size-full object-cover"
+                    />
+                    <AvatarFallback className="size-full rounded-none font-heading text-3xl">
+                      {DATA.initials}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
+                <figcaption className="absolute inset-x-0 bottom-0 px-3 pb-3 font-mono text-[0.625rem] uppercase tracking-[0.15em] text-muted-foreground">
+                  Bengaluru, IN
+                </figcaption>
+              </figure>
             </BlurFade>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════ ABOUT ═══════════════════ */}
-      <section id="about">
-        <BlurFade delay={DELAY * 3} inView>
-          <div className="flex gap-6">
-            <div className="hidden sm:block w-px bg-accent/30 flex-none" />
-            <div className="space-y-3">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-accent">
-                About
-              </h2>
-              <p className="text-base leading-relaxed text-muted-foreground max-w-2xl">
-                {DATA.summary}
-              </p>
-            </div>
-          </div>
-        </BlurFade>
-      </section>
+      <AboutSection />
 
-      {/* ═══════════════════ SKILLS ═══════════════════ */}
-      <section id="skills">
-        <BlurFade delay={DELAY * 3} inView>
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-accent mb-8">
-            Tech Stack
-          </h2>
-        </BlurFade>
-        <div className="space-y-6">
-          {DATA.skillCategories.map((category, catIdx) => (
-            <BlurFade
-              key={category.name}
-              delay={DELAY * 4 + catIdx * 0.08}
-              inView
-            >
-              <div className="flex items-start gap-6">
-                <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/60 w-20 flex-none pt-1.5 font-mono">
-                  {category.name}
-                </span>
-                <div className="h-px bg-border flex-none w-6 mt-3" />
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="px-3 py-1 text-xs font-medium hover:bg-accent/10 hover:text-accent transition-colors cursor-default"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </BlurFade>
-          ))}
-        </div>
-      </section>
+      {/* ═══════════════════ TECH STACK ═══════════════════ */}
+      <StackSection />
 
       {/* ═══════════════════ PROJECTS ═══════════════════ */}
       <section id="projects">
